@@ -35,6 +35,7 @@ public class Home extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Login = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,7 +61,6 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 215, 181, 40));
 
-        jPasswordField1.setText("jPasswordField1");
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
@@ -85,11 +85,17 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 204, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/login.png")); // NOI18N
+        jLabel6.setText("jLabel6");
+        jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 350, 190));
+
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 370, 210));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/internet.jpg")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/internet.jpg")); // NOI18N
         jLabel5.setAlignmentX(30.0F);
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 850, 520));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,6 +165,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
