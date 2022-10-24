@@ -117,7 +117,7 @@ public class Admin extends javax.swing.JFrame {
 
         jTextField3.setBackground(new java.awt.Color(204, 204, 255));
         jTextField3.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jTextField3.setText("CreatePlan");
+        jTextField3.setText("EMPLOYEE");
         jTextField3.setToolTipText("");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +135,7 @@ public class Admin extends javax.swing.JFrame {
 
         jTextField4.setBackground(new java.awt.Color(204, 204, 255));
         jTextField4.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jTextField4.setText("CreatePlan");
+        jTextField4.setText("CUSTOMER");
         jTextField4.setToolTipText("");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +146,7 @@ public class Admin extends javax.swing.JFrame {
 
         jTextField5.setBackground(new java.awt.Color(204, 204, 255));
         jTextField5.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jTextField5.setText("CreatePlan");
+        jTextField5.setText("CREATEPLAN");
         jTextField5.setToolTipText("");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +171,7 @@ public class Admin extends javax.swing.JFrame {
 
         jTextField6.setBackground(new java.awt.Color(204, 204, 255));
         jTextField6.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jTextField6.setText("Complaint");
+        jTextField6.setText("COMPLAINT");
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);

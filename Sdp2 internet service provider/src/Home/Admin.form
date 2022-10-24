@@ -209,7 +209,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Helvetica Neue" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CreatePlan"/>
+                <Property name="text" type="java.lang.String" value="EMPLOYEE"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
@@ -255,7 +255,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Helvetica Neue" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CreatePlan"/>
+                <Property name="text" type="java.lang.String" value="CUSTOMER"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
@@ -275,7 +275,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Helvetica Neue" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="CreatePlan"/>
+                <Property name="text" type="java.lang.String" value="CREATEPLAN"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
@@ -347,7 +347,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Helvetica Neue" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Complaint"/>
+                <Property name="text" type="java.lang.String" value="COMPLAINT"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField6ActionPerformed"/>
