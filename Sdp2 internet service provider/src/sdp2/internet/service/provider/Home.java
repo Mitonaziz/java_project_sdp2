@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Home;
+package sdp2.internet.service.provider;
 
 /**
  *
@@ -86,14 +86,12 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/login.png")); // NOI18N
         jLabel6.setText("jLabel6");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 350, 190));
 
         jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 370, 210));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/internet.jpg")); // NOI18N
         jLabel5.setAlignmentX(30.0F);
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 520));
 

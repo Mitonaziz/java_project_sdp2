@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Home;
+package sdp2.internet.service.provider;
 
 /**
  *
@@ -53,7 +53,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
 
         jLabel12.setBackground(new java.awt.Color(0, 255, 102));
-        jLabel12.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/ADMIN PIC.jpeg")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -66,8 +65,6 @@ public class Admin extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/ADMIN PIC.jpeg")); // NOI18N
-
         jLabel14.setText("jLabel14");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,8 +76,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 255, 204));
         jLabel1.setText("VESIT BROADVAND");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 264, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/logomain.png")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, 79));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -129,7 +124,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(204, 255, 102));
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/newplan.png")); // NOI18N
         jLabel7.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 40, 40));
 
@@ -158,14 +152,12 @@ public class Admin extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(204, 255, 204));
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/employee.png")); // NOI18N
         jLabel8.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 40, 40));
 
         jLabel9.setBackground(new java.awt.Color(204, 255, 204));
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/customer.png")); // NOI18N
         jLabel9.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 40, 40));
 
@@ -182,7 +174,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel10.setBackground(new java.awt.Color(204, 255, 204));
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/complaint.png")); // NOI18N
         jLabel10.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 40, 40));
 
@@ -199,13 +190,10 @@ public class Admin extends javax.swing.JFrame {
         jLabel11.setBackground(new java.awt.Color(204, 255, 204));
         jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/logout.png")); // NOI18N
         jLabel11.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 40, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 680, 290));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/ADMIN PIC.jpeg")); // NOI18N
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
