@@ -33,18 +33,23 @@ public class Admin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
 
         jLabel12.setBackground(new java.awt.Color(0, 255, 102));
@@ -78,14 +83,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/logomain.png")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, 79));
 
-        jLabel7.setBackground(new java.awt.Color(204, 255, 102));
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/newplan.png")); // NOI18N
-        jLabel7.setText("CREATE PLAN");
-        jLabel7.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 265, 175, 40));
-
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel3.setText("Date  ");
@@ -116,48 +113,95 @@ public class Admin extends javax.swing.JFrame {
         jLabel6.setText("ADMIN");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
 
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField3.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField3.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jTextField3.setText("CreatePlan");
+        jTextField3.setToolTipText("");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 140, 40));
+
+        jLabel7.setBackground(new java.awt.Color(204, 255, 102));
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/newplan.png")); // NOI18N
+        jLabel7.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 40, 40));
+
+        jTextField4.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField4.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jTextField4.setText("CreatePlan");
+        jTextField4.setToolTipText("");
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 140, 40));
+
+        jTextField5.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField5.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jTextField5.setText("CreatePlan");
+        jTextField5.setToolTipText("");
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 140, 40));
+
         jLabel8.setBackground(new java.awt.Color(204, 255, 204));
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/employee.png")); // NOI18N
-        jLabel8.setText("EMPLOYEES");
         jLabel8.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 385, 175, -1));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 40, 40));
 
         jLabel9.setBackground(new java.awt.Color(204, 255, 204));
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/customer.png")); // NOI18N
-        jLabel9.setText("CUSTOMER");
         jLabel9.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 265, 188, -1));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 40, 40));
+
+        jTextField6.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField6.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jTextField6.setText("Complaint");
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 140, 40));
 
         jLabel10.setBackground(new java.awt.Color(204, 255, 204));
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/complaint.png")); // NOI18N
-        jLabel10.setText("COMPLAINT");
         jLabel10.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 385, 188, -1));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 40, 40));
+
+        jTextField7.setBackground(new java.awt.Color(204, 204, 255));
+        jTextField7.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jTextField7.setText("LOG OUT");
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 120, 40));
 
         jLabel11.setBackground(new java.awt.Color(204, 255, 204));
         jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
         jLabel11.setIcon(new javax.swing.ImageIcon("/Users/mdazizurrahman/Downloads/java_project_sdp2/Sdp2 internet service provider/src/Home/logout.png")); // NOI18N
-        jLabel11.setText("LOG OUT");
         jLabel11.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(346, 209, 128, -1));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 290, Short.MAX_VALUE)
-        );
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 40, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 680, 290));
 
@@ -185,6 +229,26 @@ public class Admin extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,5 +306,10 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }
