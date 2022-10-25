@@ -1,25 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package sdp2.internet.service.provider;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.*;  
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import java.sql.DriverManager;
 
 /**
  *
  * @author mdazizurrahman
  */
 public class Home extends javax.swing.JFrame {
-
+Connection conn;
+PreparedStatement pst;
+ResultSet rs;
     /**
      * Creates new form Home
      */
     public Home() {
+        super("Home Page");
         initComponents();
+         conn=javaconnect.ConnecrDb();
     }
 
     /**
@@ -123,32 +130,36 @@ public class Home extends javax.swing.JFrame {
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
+        String sql= "select * from admin where username=? and password=?";
         try{
-            Class.forName("com.mysql.jdbc.driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/phpmyadmin/index.php?route=/database/structure&db=Isp_Internet_service_provider","root","");
-            String sql = "Select * from logindatabase where username=? and password=?";
-           PreparedStatement pst=con.prepareStatement(sql);  
- 
-          // PrepareStatement pst = con.prepareStatement("Select * from logindatabase where username=? and password=?");
-            pst.setString(1,username.getText());
-             pst.setString(2,password.getText());
-             ResultSet rs = pst.executeQuery ();
-             if(rs.next())
-             {
-                JOptionPane.showMessageDialog(null,"Password is matched");
-             }
-             else
-                 
-             {
-                 JOptionPane.showMessageDialog(null,"Username and password donot matched");
-                 username.setText("");
-                 password.setText("");
-             }
-             con.close();
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null,e);
+            pst=conn.prepareStatement(sql);
+            pst.setString(1, username.getText());
+            pst.setString(2, password.getText());
+           
+            rs = pst.executeQuery();
+            if(rs.next()){
+               System.out.println(" Login successfull");
+                rs.close();
+                pst.close();
+                setVisible(false);
+                //Loading ob = new Loading();
+                //ob.setUploading();
+                //ob.setVisible(true);
+                Admin ob = new Admin();
+               ob.setVisible(true);
+               
+            }else{
+                JOptionPane.showMessageDialog(null, "Wrong Username Or Password....!!");
+            }
+        }catch(Exception e){
+            
+        }finally{
+            try{
+                rs.close();
+                pst.close(); 
+            }catch(Exception e){
+                
+            }
         }
     }//GEN-LAST:event_LoginActionPerformed
 
