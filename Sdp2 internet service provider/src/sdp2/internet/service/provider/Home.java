@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sdp2.internet.service.provider;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.*;  
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,8 +35,8 @@ public class Home extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        username = new javax.swing.JTextField();
+        password = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         Login = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -54,19 +59,19 @@ public class Home extends javax.swing.JFrame {
         jLabel3.setText("Username");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 209, 101, 51));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                usernameActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 215, 181, 40));
+        jPanel3.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 215, 181, 40));
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                passwordActionPerformed(evt);
             }
         });
-        jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 271, 181, 42));
+        jPanel3.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 271, 181, 42));
 
         jLabel4.setFont(new java.awt.Font("Kailasa", 1, 18)); // NOI18N
         jLabel4.setText("ADMIN LOGIN");
@@ -86,7 +91,6 @@ public class Home extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setText("jLabel6");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 350, 190));
 
@@ -109,16 +113,43 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_usernameActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_passwordActionPerformed
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
         // TODO add your handling code here:
+        try{
+            Class.forName("com.mysql.jdbc.driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/phpmyadmin/index.php?route=/database/structure&db=Isp_Internet_service_provider","root","");
+            String sql = "Select * from logindatabase where username=? and password=?";
+           PreparedStatement pst=con.prepareStatement(sql);  
+ 
+          // PrepareStatement pst = con.prepareStatement("Select * from logindatabase where username=? and password=?");
+            pst.setString(1,username.getText());
+             pst.setString(2,password.getText());
+             ResultSet rs = pst.executeQuery ();
+             if(rs.next())
+             {
+                JOptionPane.showMessageDialog(null,"Password is matched");
+             }
+             else
+                 
+             {
+                 JOptionPane.showMessageDialog(null,"Username and password donot matched");
+                 username.setText("");
+                 password.setText("");
+             }
+             con.close();
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,e);
+        }
     }//GEN-LAST:event_LoginActionPerformed
 
     /**
@@ -166,7 +197,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField password;
+    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
