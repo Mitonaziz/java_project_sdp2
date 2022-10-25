@@ -13,7 +13,7 @@ public class javaconnect {
 public static java.sql.Connection ConnecrDb(){
   try{
      
-     java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/isp", "root", "");
+     java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Isp_Internet_service_provider", "root", "");
      return conn;
   } catch(Exception e){
       
