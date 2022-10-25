@@ -87,7 +87,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel4.setText("Time");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 60, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -95,7 +94,6 @@ public class Admin extends javax.swing.JFrame {
         });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 25, 159, -1));
 
-        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -194,6 +192,8 @@ public class Admin extends javax.swing.JFrame {
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 40, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 680, 290));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdp2/internet/service/provider/IMAGE/ADMIN PIC.jpeg"))); // NOI18N
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
