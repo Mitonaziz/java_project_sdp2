@@ -23,7 +23,7 @@ ResultSet rs;
     /**
      * Creates new form Home
      */
-    public Home() {
+    public Home  () {
         super("Home Page");
         initComponents();
          conn=javaconnect.ConnecrDb();

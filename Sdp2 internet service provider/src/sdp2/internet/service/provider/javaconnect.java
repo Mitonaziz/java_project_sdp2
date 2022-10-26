@@ -6,16 +6,15 @@ package sdp2.internet.service.provider;
 
 import com.sun.jdi.connect.spi.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 public class javaconnect {
-        Connection conn;
 public static java.sql.Connection ConnecrDb(){
   try{
      
-     java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Isp_Internet_service_provider", "root", "");
-     return conn;
-  } catch(Exception e){
+     return DriverManager.getConnection("jdbc:mysql://localhost/Isp_Internet_service_provider", "root", "");
+  } catch(SQLException e){
       
   }
         return null;
