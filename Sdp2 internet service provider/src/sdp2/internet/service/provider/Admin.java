@@ -4,6 +4,12 @@
  */
 package sdp2.internet.service.provider;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
+
 /**
  *
  * @author mdazizurrahman
@@ -15,8 +21,22 @@ public class Admin extends javax.swing.JFrame {
      */
     public Admin() {
         initComponents();
+         showDate();
+        showTime();
     }
-
+void showDate(){
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("YYYY-MM-dd");
+        dateLab.setText(s.format(d));
+    }
+    
+    void showTime(){
+        new Timer(0, (ActionEvent e) -> {
+            Date d = new Date();
+            SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
+            timeLab.setText(s.format(d));
+        }).start();
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,23 +55,23 @@ public class Admin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         Emplbutton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        dateLab = new javax.swing.JButton();
+        timeLab = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
 
         jLabel12.setBackground(new java.awt.Color(0, 255, 102));
@@ -88,20 +108,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel4.setText("Time");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 60, -1, -1));
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 25, 159, -1));
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 62, 159, -1));
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(299, 186, 151, -1));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -117,17 +123,6 @@ public class Admin extends javax.swing.JFrame {
         jLabel7.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 40, 40));
 
-        jTextField4.setBackground(new java.awt.Color(204, 204, 255));
-        jTextField4.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jTextField4.setText("CUSTOMER");
-        jTextField4.setToolTipText("");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 140, 40));
-
         jLabel8.setBackground(new java.awt.Color(204, 255, 204));
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
@@ -142,22 +137,12 @@ public class Admin extends javax.swing.JFrame {
         jLabel9.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 40, 40));
 
-        jTextField6.setBackground(new java.awt.Color(204, 204, 255));
-        jTextField6.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jTextField6.setText("COMPLAINT");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 140, 40));
-
         jLabel10.setBackground(new java.awt.Color(204, 255, 204));
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdp2/internet/service/provider/IMAGE/complaint.png"))); // NOI18N
         jLabel10.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 40, 40));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 40, -1));
 
         jTextField7.setBackground(new java.awt.Color(204, 204, 255));
         jTextField7.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -196,6 +181,27 @@ public class Admin extends javax.swing.JFrame {
         });
         jPanel3.add(Emplbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 160, 40));
 
+        jButton2.setBackground(new java.awt.Color(204, 204, 255));
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jButton2.setText("CUSTOMER");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 140, 40));
+
+        jButton3.setBackground(new java.awt.Color(204, 204, 255));
+        jButton3.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jButton3.setText("COMPLAINT");
+        jButton3.setActionCommand("");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 140, 40));
+
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdp2/internet/service/provider/IMAGE/login.png"))); // NOI18N
         jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 290));
 
@@ -203,6 +209,17 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdp2/internet/service/provider/IMAGE/logomain.png"))); // NOI18N
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 70, 100));
+
+        dateLab.setActionCommand("");
+        jPanel1.add(dateLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 180, 20));
+
+        timeLab.setActionCommand("");
+        timeLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeLabActionPerformed(evt);
+            }
+        });
+        jPanel1.add(timeLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, 180, 20));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdp2/internet/service/provider/IMAGE/ADMIN PIC.jpeg"))); // NOI18N
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 510));
@@ -221,22 +238,6 @@ public class Admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
@@ -249,12 +250,24 @@ public class Admin extends javax.swing.JFrame {
         setVisible(false);
         Employe epage= new Employe();
         epage.setVisible(true);
-
+        
 
 
 
         // TODO add your handling code here:
     }//GEN-LAST:event_EmplbuttonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void timeLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeLabActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_timeLabActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,7 +306,10 @@ public class Admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Emplbutton;
+    private javax.swing.JButton dateLab;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -314,10 +330,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JButton timeLab;
     // End of variables declaration//GEN-END:variables
 }
