@@ -40,16 +40,16 @@ public class Admin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        Emplbutton = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -110,17 +110,6 @@ public class Admin extends javax.swing.JFrame {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField3.setBackground(new java.awt.Color(204, 204, 255));
-        jTextField3.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jTextField3.setText("EMPLOYEE");
-        jTextField3.setToolTipText("");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 140, 40));
-
         jLabel7.setBackground(new java.awt.Color(204, 255, 102));
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
@@ -138,17 +127,6 @@ public class Admin extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 140, 40));
-
-        jTextField5.setBackground(new java.awt.Color(204, 204, 255));
-        jTextField5.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jTextField5.setText("CREATEPLAN");
-        jTextField5.setToolTipText("");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 140, 40));
 
         jLabel8.setBackground(new java.awt.Color(204, 255, 204));
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -198,8 +176,28 @@ public class Admin extends javax.swing.JFrame {
         jLabel11.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 40, 40));
 
+        jButton1.setBackground(new java.awt.Color(204, 204, 255));
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jButton1.setText("CREATE PLAN");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 160, 40));
+
+        Emplbutton.setBackground(new java.awt.Color(204, 204, 255));
+        Emplbutton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        Emplbutton.setText("Employe");
+        Emplbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmplbuttonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Emplbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 160, 40));
+
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdp2/internet/service/provider/IMAGE/login.png"))); // NOI18N
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, -3, 680, 290));
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 290));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 680, 290));
 
@@ -231,17 +229,9 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
@@ -250,6 +240,21 @@ public class Admin extends javax.swing.JFrame {
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void EmplbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmplbuttonActionPerformed
+        setVisible(false);
+        Employe epage= new Employe();
+        epage.setVisible(true);
+
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmplbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,6 +292,8 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Emplbutton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -309,9 +316,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables

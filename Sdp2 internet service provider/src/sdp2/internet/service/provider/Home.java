@@ -87,6 +87,8 @@ ResultSet rs;
         Login.setBackground(new java.awt.Color(204, 204, 255));
         Login.setFont(new java.awt.Font("Hiragino Maru Gothic ProN", 0, 14)); // NOI18N
         Login.setText("Login");
+        Login.setAutoscrolls(true);
+        Login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 51, 255), new java.awt.Color(153, 204, 255), new java.awt.Color(255, 102, 102), new java.awt.Color(153, 255, 51)));
         Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginActionPerformed(evt);
