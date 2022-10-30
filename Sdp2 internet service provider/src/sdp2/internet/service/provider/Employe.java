@@ -470,12 +470,14 @@ public void Search(){
             // TODO add your handling code here:
                  
             Statement stmt= (Statement) conn.createStatement(); 
-             String query = " Select e_name='"+name.getText()+"',e_contact ='"+contact.getText()+"',e_email='"+email.getText()+"',e_city='"+city.getText()+"',e_join='"+joindate.getText()+"',e_living='"+leavedate.getText()+"',e_addres='"+addrees.getText()+"',e_salary='"+salary.getText()+"'from employe where e_id= '"+id.getText()+"' ";
+             String query = " Select * from employe where e_id= '"+search.getText()+"' ";
+             System.out.println(search.getText());
            //e_name='"+name.getText()+"',e_contact ='"+contact.getText()+"',e_email='"+email.getText()+"',e_city='"+city.getText()+"',e_join='"+joindate.getText()+"',e_living='"+leavedate.getText()+"',e_salary='"+salary.getText()+"',e_addres='"+addrees.getText()+"'  
 //,e_living='"+leavedate.getText()+"',e_salary='"+salary.getText()+"'
-         
+          //ResultSet rs = stmt.executeQuery(query);
              //query.setString(1, search.getText());
-           int i= stmt.executeUpdate(query);
+           int i= stmt.executeQuery(query);
+          
                 if (i==1)
                 {
                     JOptionPane.showMessageDialog(null,"Data Search successfully");
