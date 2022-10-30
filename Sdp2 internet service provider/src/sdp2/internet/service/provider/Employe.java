@@ -466,33 +466,17 @@ public void update(){
 
 public void Search(){
     
-    try {
-            // TODO add your handling code here:
-                 
+     try{
             Statement stmt= (Statement) conn.createStatement(); 
-             String query = " Select * from employe where e_id= '"+search.getText()+"' ";
-             System.out.println(search.getText());
-           //e_name='"+name.getText()+"',e_contact ='"+contact.getText()+"',e_email='"+email.getText()+"',e_city='"+city.getText()+"',e_join='"+joindate.getText()+"',e_living='"+leavedate.getText()+"',e_salary='"+salary.getText()+"',e_addres='"+addrees.getText()+"'  
-//,e_living='"+leavedate.getText()+"',e_salary='"+salary.getText()+"'
-          //ResultSet rs = stmt.executeQuery(query);
-             //query.setString(1, search.getText());
-           int i= stmt.executeQuery(query);
-          
-                if (i==1)
-                {
-                    JOptionPane.showMessageDialog(null,"Data Search successfully");
-                    employetable();
-                 
-                }
-          
-                else 
-                {
-                    JOptionPane.showMessageDialog(null,"Data not search please try again");
-                }
-        } catch (Exception ex) {
-             JOptionPane.showMessageDialog(null,"You have a mistake please try again");
+            String sql = "select e_id, e_name, e_contact, e_email, e_addres, e_city, e_join, e_living, e_salary from employe where e_id= '"+search.getText()+"'";
+           ResultSet res =  stmt.executeQuery(sql);
             
-        }        // TODO add your handling code here:
+            employetable.setModel(DbUtils.resultSetToTableModel(res));
+        }catch(Exception e){
+            
+        }
+          
+    
     
     
     
