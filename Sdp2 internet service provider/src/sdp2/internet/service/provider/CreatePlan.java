@@ -4,12 +4,34 @@
  */
 package sdp2.internet.service.provider;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author mdazizurrahman
  */
 public class CreatePlan extends javax.swing.JFrame {
 
+    
+    
+        ResultSet rs;
+java.sql.Connection conn;
+        public void create(){
+        try{
+            Statement stmt= (Statement) conn.createStatement(); 
+            String sql = "select e_id, e_name, e_contact, e_email, e_addres, e_city, e_join, e_living, e_salary from employe";
+           ResultSet res =  stmt.executeQuery(sql);
+         
+            Create.setModel(DbUtils.resultSetToTableModel(res));
+        }catch(Exception e){
+            
+        }
+        
+        }
+        
     /**
      * Creates new form CreatePlan
      */
@@ -41,7 +63,7 @@ public class CreatePlan extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Create = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
@@ -116,6 +138,11 @@ public class CreatePlan extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(102, 255, 102));
         jButton3.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jButton3.setText("ADD");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(255, 255, 204));
         jButton4.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
@@ -126,8 +153,8 @@ public class CreatePlan extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Create.setAutoCreateRowSorter(true);
+        Create.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -138,7 +165,7 @@ public class CreatePlan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Create);
 
         jLabel7.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel7.setText("COST");
@@ -490,13 +517,43 @@ public class CreatePlan extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    
 
         // TODO add your handling code here:
-      setVisible(false);
-        Admin ob=new Admin();
+        setVisible(false);
+        Admin ob = new Admin();
         ob.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            // TODO add your handling code here:
+
+            Statement stmt = (Statement) conn.createStatement();
+            String query = "insert into employe (e_id, e_name, e_contact, e_email, e_addres, e_city, e_join, e_living, e_salary ) "
+                    + "VALUES('" + id.getText() + "', '" + name.getText() + "', '" + contact.getText() + "', '" + email.getText() + "', '" + addrees.getText() + "', '" + city.getText() + "','" + joindate.getText() + "','" + leavedate.getText() + "','" + salary.getText() + "' )";
+
+            int i = stmt.executeUpdate(query);
+            if (i == 1) {
+                JOptionPane.showMessageDialog(null, "Data insert successfully");
+                //id.setText("");
+//        name.setText("");
+//        contact.setText("");
+//        joindate.setText("");
+//        addrees.setText("");
+//        leavedate.setText("");
+//        city.setText("");
+//        email.setText("");
+//        salary.setText("");
+                create();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Data not insert please try again");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "You have a mistake please try again");
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,6 +591,7 @@ public class CreatePlan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Create;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -562,7 +620,6 @@ public class CreatePlan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
