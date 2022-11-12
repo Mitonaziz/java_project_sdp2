@@ -22,8 +22,16 @@ java.sql.Connection conn;
         public void create(){
         try{
             Statement stmt= (Statement) conn.createStatement(); 
-            String sql = "select e_id, e_name, e_contact, e_email, e_addres, e_city, e_join, e_living, e_salary from employe";
-           ResultSet res =  stmt.executeQuery(sql);
+            String sql = "select id, package, speed, cost, total_cost, month from createpanel ";
+          // CREATE TABLE `createpanel` (
+  //`id` int(11) NOT NULL,
+  //`package_name` varchar(50) DEFAULT NULL,
+  //`speed` varchar(30) DEFAULT NULL,
+  //`cost` int(11) DEFAULT NULL,
+  //`total_cost` int(11) DEFAULT NULL,
+  //`month` int(11) DEFAULT NULL
+)
+            ResultSet res =  stmt.executeQuery(sql);
          
             Create.setModel(DbUtils.resultSetToTableModel(res));
         }catch(Exception e){
@@ -529,9 +537,16 @@ java.sql.Connection conn;
             // TODO add your handling code here:
 
             Statement stmt = (Statement) conn.createStatement();
-            String query = "insert into employe (e_id, e_name, e_contact, e_email, e_addres, e_city, e_join, e_living, e_salary ) "
+            String query = "insert into createpanel (id, package_name, speed, cost, total_cost, month ) "
                     + "VALUES('" + id.getText() + "', '" + name.getText() + "', '" + contact.getText() + "', '" + email.getText() + "', '" + addrees.getText() + "', '" + city.getText() + "','" + joindate.getText() + "','" + leavedate.getText() + "','" + salary.getText() + "' )";
-
+CREATE TABLE `createpanel` (
+  `id` int(11) NOT NULL,
+  `package_name` varchar(50) DEFAULT NULL,
+  `speed` varchar(30) DEFAULT NULL,
+  `cost` int(11) DEFAULT NULL,
+  `total_cost` int(11) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL
+)
             int i = stmt.executeUpdate(query);
             if (i == 1) {
                 JOptionPane.showMessageDialog(null, "Data insert successfully");
