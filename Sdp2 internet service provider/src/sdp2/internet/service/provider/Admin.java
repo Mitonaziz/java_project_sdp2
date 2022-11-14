@@ -210,10 +210,13 @@ void showDate(){
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdp2/internet/service/provider/IMAGE/logomain.png"))); // NOI18N
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 70, 100));
 
-        dateLab.setActionCommand("");
+        dateLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateLabActionPerformed(evt);
+            }
+        });
         jPanel1.add(dateLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 180, 20));
 
-        timeLab.setActionCommand("");
         timeLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 timeLabActionPerformed(evt);
@@ -272,6 +275,10 @@ setVisible(false);
     private void timeLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeLabActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_timeLabActionPerformed
+
+    private void dateLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateLabActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateLabActionPerformed
 
     /**
      * @param args the command line arguments

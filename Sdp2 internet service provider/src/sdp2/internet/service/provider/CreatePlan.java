@@ -12,6 +12,9 @@ import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import javax.swing.table.DefaultTableModel;
 import com.sun.jdi.connect.spi.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 /**
  *
  * @author mdazizurrahman
@@ -22,14 +25,14 @@ public class CreatePlan extends javax.swing.JFrame {
     
         ResultSet rs;
 java.sql.Connection conn;
-        public void create(){
+        public void createplantable(){
         try{
             Statement stmt= (Statement) conn.createStatement(); 
-            String sql = "select id, package, speed, cost, total_cost, month from createpanel ";
+            String sql = "select id as ID,package_name as 'Package Name', speed as Speed,cost as 'Per Month Cost', total_cost as 'Total Cost', starting_date as 'Starting Date' , expiry_date as 'Expiry Date' from createpanel ";
 
             ResultSet res =  stmt.executeQuery(sql);
          
-            Create.setModel(DbUtils.resultSetToTableModel(res));
+            createplantable.setModel(DbUtils.resultSetToTableModel(res));
         }catch(Exception e){
             
         }
@@ -44,8 +47,12 @@ java.sql.Connection conn;
         initComponents();
         
           conn=javaconnect.ConnecrDb();
+           createplantable();
     }
 
+   
+      
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,10 +77,10 @@ java.sql.Connection conn;
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Create = new javax.swing.JTable();
+        createplantable = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        mmm = new javax.swing.JTextField();
+        month = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -160,8 +167,8 @@ java.sql.Connection conn;
             }
         });
 
-        Create.setAutoCreateRowSorter(true);
-        Create.setModel(new javax.swing.table.DefaultTableModel(
+        createplantable.setAutoCreateRowSorter(true);
+        createplantable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -172,7 +179,7 @@ java.sql.Connection conn;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(Create);
+        jScrollPane1.setViewportView(createplantable);
 
         jLabel7.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel7.setText("COST");
@@ -180,9 +187,9 @@ java.sql.Connection conn;
         jLabel8.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel8.setText(" TOTAL DAYS");
 
-        mmm.addActionListener(new java.awt.event.ActionListener() {
+        month.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mmmActionPerformed(evt);
+                monthActionPerformed(evt);
             }
         });
 
@@ -222,7 +229,7 @@ java.sql.Connection conn;
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mmm, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 849, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(437, 437, 437)
@@ -257,7 +264,7 @@ java.sql.Connection conn;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mmm, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(month, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(134, 134, 134)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -499,9 +506,9 @@ java.sql.Connection conn;
         // TODO add your handling code here:
     }//GEN-LAST:event_nameActionPerformed
 
-    private void mmmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmmActionPerformed
+    private void monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mmmActionPerformed
+    }//GEN-LAST:event_monthActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
@@ -527,25 +534,36 @@ java.sql.Connection conn;
 
         // TODO add your handling code here:
         setVisible(false);
+       
         Admin ob = new Admin();
         ob.setVisible(true);
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            // TODO add your handling code here:
 
-          
+         Calendar now = Calendar.getInstance();
+        try {
+//             TODO add your handling code here:
+           
+//           
+          String total = cost.getText();
+          String month = this.month.getText();
+          int per_month = Integer.parseInt(month);
+          Date starting_date = now.getTime();
+          now.add(Calendar.MONTH, per_month);
+           Date time = now.getTime();
+            System.out.println(time);
+          int total_tk = Integer.parseInt(total);  
+          total_tk = total_tk*per_month;
             Statement stmt = (Statement) conn.createStatement();
-            String query = "insert into createpanel (id, package_name, speed, cost ,month )" +"VALUES('" + id.getText() + "', '" + name.getText() + "', '" + speed.getText() + "', '" + cost.getText() + "',  '" + mmm.getText() + "' )";
+            String query = "insert into createpanel (id, package_name, speed, cost,total_cost,expiry_date,starting_date)" +"VALUES('" + id.getText() + "', '" + name.getText() + "', '" + speed.getText() + "', '" + cost.getText() + "', '"+total_tk+"' , '"+time+"','"+starting_date+"')";
 
           
             int i = stmt.executeUpdate(query);
             if (i == 1) {
                 JOptionPane.showMessageDialog(null, "Data insert successfully");
-
-                create();
-
+                createplantable();
             } else {
                 JOptionPane.showMessageDialog(null, "Data not insert please try again");
             }
@@ -553,46 +571,27 @@ java.sql.Connection conn;
             JOptionPane.showMessageDialog(null, "You have a mistake please try again");
 
         }        // TODO add your handling code here:
+              
+        createplantable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreatePlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreatePlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreatePlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreatePlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+       
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                 
                 new CreatePlan().setVisible(true);
+                 
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Create;
     private javax.swing.JTextField cost;
+    private javax.swing.JTable createplantable;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -628,7 +627,7 @@ java.sql.Connection conn;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextField mmm;
+    private javax.swing.JTextField month;
     private javax.swing.JTextField name;
     private javax.swing.JTextField speed;
     // End of variables declaration//GEN-END:variables
