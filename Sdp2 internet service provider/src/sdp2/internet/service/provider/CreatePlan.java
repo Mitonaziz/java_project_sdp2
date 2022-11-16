@@ -15,20 +15,21 @@ import com.sun.jdi.connect.spi.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
 /**
  *
  * @author mdazizurrahman
  */
 public class CreatePlan extends javax.swing.JFrame {
 
-    
+   
     
         ResultSet rs;
 java.sql.Connection conn;
         public void createplantable(){
         try{
             Statement stmt= (Statement) conn.createStatement(); 
-            String sql = "select id as ID,package_name as 'Package Name', speed as Speed,cost as 'Per Month Cost', total_cost as 'Total Cost', starting_date as 'Starting Date' , expiry_date as 'Expiry Date' from createpanel ";
+            String sql = "select id as ID,package_name as 'Package Name', speed as Speed,cost as 'Per Month Cost' from createpanel ";
 
             ResultSet res =  stmt.executeQuery(sql);
          
@@ -42,6 +43,61 @@ java.sql.Connection conn;
     /**
      * Creates new form CreatePlan
      */
+       public  void update(){
+         try {
+            // TODO add your handling code here:
+                 
+            Statement stmt= (Statement) conn.createStatement(); 
+             String query = "UPDATE createpanel SET  package_name = '"+name.getText()+"', speed ='"+speed.getText()+"', cost = '"+cost.getText()+"' where id = '"+id.getText()+"' ";
+                 
+           int update= stmt.executeUpdate(query);
+                if (update==1)
+                {
+                    JOptionPane.showMessageDialog(null,"Data insert successfully");
+                   createplantable();
+                 
+                }
+          
+                else 
+                {
+                    JOptionPane.showMessageDialog(null,"Data not insert please try again");
+                }
+        } catch (Exception ex) {
+             JOptionPane.showMessageDialog(null,ex);
+            
+        }
+      }
+       
+       
+   public void Delete(){
+    
+    try {
+            // TODO add your handling code here:
+       
+            Statement stmt= (Statement) conn.createStatement(); 
+             String query = "DELETE FROM createpanel where id= '"+id.getText()+"' ";
+                    
+           int i= stmt.executeUpdate(query);
+                if (i==1)
+                {
+                    JOptionPane.showMessageDialog(null,"Data Delete successfully");
+                    createplantable();
+                 
+                }
+          
+                else 
+                {
+                    JOptionPane.showMessageDialog(null,"Data not Delete please try again");
+                }
+        } catch (Exception ex) {
+             JOptionPane.showMessageDialog(null,ex);
+            
+        }        // TODO add your handling code here:
+    
+    
+    
+}
+        
     public CreatePlan() {
         super("Create Plan");
         initComponents();
@@ -166,6 +222,16 @@ java.sql.Connection conn;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        createplantable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                createplantableMouseDragged(evt);
+            }
+        });
+        createplantable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createplantableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(createplantable);
 
         jLabel7.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
@@ -337,10 +403,15 @@ java.sql.Connection conn;
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        update();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        id.setText(null);
+        name.setText(null);
+         cost.setText(null);
+         speed.setText(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -354,12 +425,30 @@ java.sql.Connection conn;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-        
+        try {
+            String speed = this.speed.getText();
+            String mbps = " mbps";
+            speed = speed+mbps;
+               Statement stmt= (Statement) conn.createStatement(); 
+               String query ="insert into createpanel (id,package_name,speed,cost) "
+                    + "VALUES('"+id.getText()+"', '"+name.getText()+"', '"+speed+"','"+cost.getText()+"' )";
+            int update= stmt.executeUpdate(query);
+            if(update==1){
+                JOptionPane.showMessageDialog(null,"Data insert successfully");
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Data not insert please try again");
+            }
+        } 
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e);
+            }
+        createplantable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Delete();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void costActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costActionPerformed
@@ -377,6 +466,21 @@ java.sql.Connection conn;
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idActionPerformed
+
+    private void createplantableMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createplantableMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createplantableMouseDragged
+
+    private void createplantableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createplantableMouseClicked
+        // TODO add your handling code here:
+         DefaultTableModel data=(DefaultTableModel)createplantable.getModel();
+        int index=createplantable.getSelectedRow();
+        id.setText(data.getValueAt(index,0).toString());
+        name.setText(data.getValueAt(index,1).toString());
+        speed.setText(data.getValueAt(index,2).toString());
+        cost.setText(data.getValueAt(index,3).toString());
+       
+    }//GEN-LAST:event_createplantableMouseClicked
 
     /**
      * @param args the command line arguments
