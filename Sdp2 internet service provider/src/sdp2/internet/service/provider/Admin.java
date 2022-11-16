@@ -175,7 +175,7 @@ void showDate(){
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 160, 40));
 
         Emplbutton.setBackground(new java.awt.Color(204, 204, 255));
-        Emplbutton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        Emplbutton.setFont(new java.awt.Font("Adobe Heiti Std R", 1, 18)); // NOI18N
         Emplbutton.setText("Employe");
         Emplbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,12 +206,12 @@ void showDate(){
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 140, 40));
 
         jButton4.setBackground(new java.awt.Color(204, 204, 255));
-        jButton4.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Adobe Gothic Std B", 1, 18)); // NOI18N
         jButton4.setText("Customer List");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 160, 40));
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 160, 40));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdp2/internet/service/provider/IMAGE/login.png"))); // NOI18N
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 780, 420));
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 420));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 780, 350));
 

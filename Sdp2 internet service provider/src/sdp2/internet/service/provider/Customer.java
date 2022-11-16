@@ -91,7 +91,7 @@ public class Customer extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel6.setText("GANDER");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MALE", "FEMALE" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MALE", "FEMALE", "OTHERS" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);

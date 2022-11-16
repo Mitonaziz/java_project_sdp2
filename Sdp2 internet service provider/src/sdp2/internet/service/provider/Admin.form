@@ -342,7 +342,7 @@
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Helvetica Neue" size="18" style="1"/>
+                  <Font name="Adobe Heiti Std R" size="18" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Employe"/>
               </Properties>
@@ -400,13 +400,13 @@
                   <Color blue="ff" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Harrington" size="18" style="1"/>
+                  <Font name="Adobe Gothic Std B" size="18" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Customer List"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="260" y="270" width="160" height="40"/>
+                  <AbsoluteConstraints x="100" y="270" width="160" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -418,7 +418,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="-70" width="780" height="420"/>
+                  <AbsoluteConstraints x="0" y="0" width="780" height="420"/>
                 </Constraint>
               </Constraints>
             </Component>
