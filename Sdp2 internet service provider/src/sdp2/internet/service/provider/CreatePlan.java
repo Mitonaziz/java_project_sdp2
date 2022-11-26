@@ -53,14 +53,14 @@ java.sql.Connection conn;
            int update= stmt.executeUpdate(query);
                 if (update==1)
                 {
-                    JOptionPane.showMessageDialog(null,"Data insert successfully");
+                    JOptionPane.showMessageDialog(null,"Data update successfully");
                    createplantable();
                  
                 }
           
                 else 
                 {
-                    JOptionPane.showMessageDialog(null,"Data not insert please try again");
+                    JOptionPane.showMessageDialog(null,"Data not update please try again");
                 }
         } catch (Exception ex) {
              JOptionPane.showMessageDialog(null,ex);

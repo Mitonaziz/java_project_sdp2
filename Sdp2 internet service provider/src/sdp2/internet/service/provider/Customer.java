@@ -1,20 +1,145 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package sdp2.internet.service.provider;
 
-/**
- *
- * @author mdazizurrahman
- */
+package sdp2.internet.service.provider;
+import com.mysql.cj.util.TimeUtil;
+import com.sun.jdi.connect.spi.Connection;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.Statement;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.DriverManager;
+import net.proteanit.sql.DbUtils;
+import java.text.SimpleDateFormat;
+import javax.swing.text.View;
+import java.sql.DatabaseMetaData;
+import java.sql.SQLException;
+import static javax.management.Query.and;
+
 public class Customer extends javax.swing.JFrame {
 
+     java.sql.Connection conn;
+     
+    public void plantable(){
+       try{
+            Statement stmt= (Statement) conn.createStatement(); 
+            String sql = "select id as ID,package_name as 'Package Name', speed as Speed,cost as 'Per Month Cost' from createpanel ";
+
+            ResultSet res =  stmt.executeQuery(sql);
+         
+            plantable.setModel(DbUtils.resultSetToTableModel(res));
+        }catch(Exception e){
+            
+        }
+    }
+    
+    public void customerlisttable(){
+        try{
+            Statement stmt = (Statement) conn.createStatement();
+            String sql =  "Select id,name,contact,gender,purpose,address,total_month,other_option,montly_cost,total_cost,plan_id,starte_date,finished_date from customer";
+            ResultSet res =  stmt.executeQuery(sql);
+         
+            customerlisttable.setModel(DbUtils.resultSetToTableModel(res));
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    public void update(){
+         try {
+            // TODO add your handling code here:
+                 
+            Statement stmt= (Statement) conn.createStatement(); 
+             
+               String sql = "select id  from createpanel where id='"+plan.getText()+"' ";
+
+            ResultSet res =  stmt.executeQuery(sql);
+            int id = 0;
+          while(res.next()){
+              id  = res.getInt("id");
+             // System.out.println(id);
+          }
+            
+            String sql1 = "Select cost from createpanel where id='"+plan.getText()+"' ";
+            
+            ResultSet res1 = stmt.executeQuery(sql1);
+            int cost = 0;
+            while(res1.next()){
+                 cost = res1.getInt("cost"); 
+            }
+            
+            int totalcost,month=0;
+             String query="",other="";
+            
+            if((this.total_month.getText()!=null) && (this.total_month.getText()!="0")){
+             String total_month = this.total_month.getText();
+             month = Integer.parseInt(total_month);
+            
+             Calendar now = Calendar.getInstance();
+            Date current_date = now.getTime();
+            now.add(Calendar.MONTH, month);
+            Date add_date = now.getTime();
+           
+            Object gend = gender.getSelectedItem();
+            Object pur = perpose.getSelectedItem();
+           
+               totalcost = month*cost;
+                System.out.println("kakj korce na");
+             query = "UPDATE customer SET name='"+name.getText()+"',contact='"+contact.getText()+"', gender='"+gend+"',purpose='"+pur+"',address='"+address.getText()+"',total_month='"+this.total_month.getText()+"', montly_cost='"+cost+"',total_cost='"+totalcost+"', plan_id='"+id+"', starte_date='"+current_date+"', finished_date='"+add_date+"' where id='"+this.id.getText()+"' ";
+            }
+            else {
+               System.out.println("kakj korce");
+               
+            Object gend = gender.getSelectedItem();
+            Object pur = perpose.getSelectedItem();
+            
+                other = other_option.getText();
+                query = "UPDATE customer SET name='"+name.getText()+"',contact='"+contact.getText()+"', gender='"+gend+"',purpose='"+pur+"',address='"+address.getText()+"', other_option='"+other+"', montly_cost='"+cost+"', plan_id='"+id+"' where id='"+this.id.getText()+"' ";
+                
+            }
+           int update= stmt.executeUpdate(query);
+                if (update==1)
+                {
+                    JOptionPane.showMessageDialog(null,"Data update successfully");
+                   customerlisttable();
+                   plantable();
+                }
+          
+                else 
+                {
+                    JOptionPane.showMessageDialog(null,"Data not update please try again");
+                }
+        } catch (Exception ex) {
+             JOptionPane.showMessageDialog(null,ex);
+            
+        }
+    }
+    
+    public void Search(){
+    
+     try{
+            Statement stmt= (Statement) conn.createStatement(); 
+            String sql = "select * from customer where id= '"+search.getText()+"' ";
+           ResultSet res =  stmt.executeQuery(sql);
+            
+            customerlisttable.setModel(DbUtils.resultSetToTableModel(res));
+        }catch(Exception e){
+            
+        }
+}
+    
     /**
      * Creates new form CUSTOMER
      */
+  
     public Customer() {
+        super("customer");
         initComponents();
+        conn=javaconnect.ConnecrDb();
+        plantable();
+        customerlisttable();
     }
 
     /**
@@ -31,35 +156,35 @@ public class Customer extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        contact = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        gender = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        perpose = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        address = new javax.swing.JTextField();
+        plan = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        fixed = new javax.swing.JCheckBox();
+        total_month = new javax.swing.JTextField();
+        other_option = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
+        search = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        customerlisttable = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        plantable = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,9 +201,9 @@ public class Customer extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel3.setText("ID");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                idActionPerformed(evt);
             }
         });
 
@@ -91,17 +216,17 @@ public class Customer extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel6.setText("GANDER");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MALE", "FEMALE", "OTHERS" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MALE", "FEMALE", "OTHERS" }));
+        gender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                genderActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel7.setText("PURPOSE");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUSINESS", "INDIVIDUAL" }));
+        perpose.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUSINESS", "INDIVIDUAL" }));
 
         jLabel8.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel8.setText("PLAN");
@@ -109,15 +234,20 @@ public class Customer extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel9.setText("ADDRESS");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        plan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                planActionPerformed(evt);
             }
         });
 
         jButton1.setBackground(new java.awt.Color(153, 255, 102));
         jButton1.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jButton1.setText("UPDATE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 204, 204));
         jButton2.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
@@ -140,20 +270,25 @@ public class Customer extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(255, 204, 204));
         jButton5.setFont(new java.awt.Font("Helvetica Neue", 3, 14)); // NOI18N
         jButton5.setText("REFRESH");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel12.setText("TOTAL MONTH");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        total_month.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                total_monthActionPerformed(evt);
             }
         });
 
-        fixed.setText("There is no fixed time to disconnect the internet connection");
-        fixed.addActionListener(new java.awt.event.ActionListener() {
+        other_option.setText("There is no fixed time to disconnect the internet connection");
+        other_option.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fixedActionPerformed(evt);
+                other_optionActionPerformed(evt);
             }
         });
 
@@ -176,16 +311,16 @@ public class Customer extends javax.swing.JFrame {
                                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(6, 6, 6)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(gender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(perpose, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField4)))
+                            .addComponent(plan)
+                            .addComponent(address)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -193,9 +328,9 @@ public class Customer extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField3)))
+                            .addComponent(name)
+                            .addComponent(id)
+                            .addComponent(contact)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,7 +338,7 @@ public class Customer extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7))
+                        .addComponent(total_month))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,7 +346,7 @@ public class Customer extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fixed, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(other_option, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 24, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -221,42 +356,42 @@ public class Customer extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1))
+                    .addComponent(gender))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(perpose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(address, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(plan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(total_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(fixed, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(other_option, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -290,7 +425,7 @@ public class Customer extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -301,12 +436,12 @@ public class Customer extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        customerlisttable.setBackground(new java.awt.Color(204, 204, 255));
+        customerlisttable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -317,16 +452,21 @@ public class Customer extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        customerlisttable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                customerlisttableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(customerlisttable);
 
         jLabel10.setBackground(new java.awt.Color(0, 153, 153));
         jLabel10.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 0, 102));
         jLabel10.setText("PLAN");
 
-        jTable2.setBackground(new java.awt.Color(204, 204, 255));
-        jTable2.setBorder(new javax.swing.border.MatteBorder(null));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        plantable.setBackground(new java.awt.Color(204, 204, 255));
+        plantable.setBorder(new javax.swing.border.MatteBorder(null));
+        plantable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -337,7 +477,12 @@ public class Customer extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        plantable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plantableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(plantable);
 
         jLabel11.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         jLabel11.setText("CUSTOMER LIST");
@@ -414,37 +559,141 @@ public class Customer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_idActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void genderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_genderActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void planActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_planActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void total_monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_monthActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_total_monthActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        Search();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        Admin ob = new Admin();
+        ob.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+          
+                  
+           
+        try{
+            
+            Statement stmt= (Statement) conn.createStatement(); 
+            String sql = "select id  from createpanel where id='"+plan.getText()+"' ";
+
+            ResultSet res =  stmt.executeQuery(sql);
+            int id = 0;
+          while(res.next()){
+              id  = res.getInt("id");
+              System.out.println(id);
+          }
+            
+            String sql1 = "Select cost from createpanel where id='"+plan.getText()+"' ";
+            
+            ResultSet res1 = stmt.executeQuery(sql1);
+            int cost = 0;
+            while(res1.next()){
+                 cost = res1.getInt("cost");
+                 
+            }
+            System.out.println(cost);
+            System.out.println("hello");
+            
+            int totalcost;
+            
+            Calendar now = Calendar.getInstance();
+            String total_month = this.total_month.getText();
+            int month = Integer.parseInt(total_month);
+            String other = "";
+            
+            if(month>0){
+                totalcost = month*cost;
+            }
+            else{
+                totalcost  = 0;
+                month=0;
+                other = other_option.getText();
+            }
+            Date current_date = now.getTime();
+            now.add(Calendar.MONTH, month);
+            Date add_date = now.getTime();
+           
+            Object gend = gender.getSelectedItem();
+            Object pur = perpose.getSelectedItem();
+             System.out.println(gend);
+           System.out.println(pur);
+           System.out.println(current_date);
+           System.out.println(add_date);
+          String query = "INSERT INTO customer(id,name,contact,gender,purpose,address,total_month,other_option,montly_cost,total_cost,plan_id,starte_date,finished_date	) " + "VALUES('"+this.id.getText()+"','"+name.getText()+"','"+contact.getText()+"','"+gend+"','"+pur+"','"+address.getText()+"','"+this.total_month.getText()+"','"+other+"','"+cost+"','"+totalcost+"','"+id+"','"+current_date+"','"+add_date+"')";
+           int update= stmt.executeUpdate(query);
+           if(update==1){
+               JOptionPane.showMessageDialog(null,"Data insert successfully");
+           }
+           else{
+               JOptionPane.showMessageDialog(null,"Data not insert please try again");
+           }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,e);
+        }
+        finally{
+        plantable();
+        customerlisttable();
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void fixedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fixedActionPerformed
+    private void other_optionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_other_optionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_fixedActionPerformed
+    }//GEN-LAST:event_other_optionActionPerformed
+
+    private void plantableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plantableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plantableMouseClicked
+
+    private void customerlisttableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerlisttableMouseClicked
+        // TODO add your handling code here:
+          DefaultTableModel data=(DefaultTableModel) customerlisttable.getModel();
+        int index= customerlisttable.getSelectedRow();
+        id.setText(data.getValueAt(index,0).toString());
+        name.setText(data.getValueAt(index,1).toString());
+        contact.setText(data.getValueAt(index,2).toString());
+        address.setText(data.getValueAt(index,5).toString());
+        plan.setText(data.getValueAt(index,10).toString());
+        
+    }//GEN-LAST:event_customerlisttableMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        update();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+         id.setText(null);
+        name.setText(null);
+         contact.setText(null);
+        address.setText(null);
+        plan.setText(null);
+        total_month.setText(null);
+        plantable();
+        customerlisttable();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -483,14 +732,16 @@ public class Customer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox fixed;
+    private javax.swing.JTextField address;
+    private javax.swing.JTextField contact;
+    private javax.swing.JTable customerlisttable;
+    private javax.swing.JComboBox<String> gender;
+    private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -509,14 +760,16 @@ public class Customer extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField name;
+    private javax.swing.JCheckBox other_option;
+    private javax.swing.JComboBox<String> perpose;
+    private javax.swing.JTextField plan;
+    private javax.swing.JTable plantable;
+    private javax.swing.JTextField search;
+    private javax.swing.JTextField total_month;
     // End of variables declaration//GEN-END:variables
+
+    private String setString(Object selectedItem) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
