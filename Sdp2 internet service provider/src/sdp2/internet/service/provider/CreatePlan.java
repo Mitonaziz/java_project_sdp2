@@ -92,10 +92,7 @@ java.sql.Connection conn;
         } catch (Exception ex) {
              JOptionPane.showMessageDialog(null,ex);
             
-        }        // TODO add your handling code here:
-    
-    
-    
+        }        // TODO add your handling code here:  
 }
         
     public CreatePlan() {

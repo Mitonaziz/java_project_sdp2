@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="30" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -135,28 +135,41 @@
                               <Component id="jLabel2" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="1" max="32767" attributes="0"/>
                               <Component id="jLabel6" alignment="1" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="update" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton5" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="name" max="32767" attributes="0"/>
                                   <Component id="id" max="32767" attributes="0"/>
                                   <Component id="contact" max="32767" attributes="0"/>
-                                  <Component id="joindate" alignment="0" max="32767" attributes="0"/>
                                   <Component id="addrees" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="leavedate" alignment="0" max="32767" attributes="0"/>
                                   <Component id="city" alignment="0" max="32767" attributes="0"/>
                                   <Component id="email" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="salary" alignment="0" pref="214" max="32767" attributes="0"/>
+                                  <Component id="salary" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="dateprint" min="-2" pref="115" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="date2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="dateprint2" min="-2" pref="115" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -190,9 +203,12 @@
                           <Component id="contact" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="joindate" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="dateprint" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="date2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -200,9 +216,12 @@
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="leavedate" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="dateprint2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -261,11 +280,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contactActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="joindate">
+            <Component class="javax.swing.JTextField" name="dateprint">
             </Component>
             <Component class="javax.swing.JTextField" name="addrees">
             </Component>
-            <Component class="javax.swing.JTextField" name="leavedate">
+            <Component class="javax.swing.JTextField" name="dateprint2">
             </Component>
             <Component class="javax.swing.JTextField" name="city">
               <Events>
@@ -279,19 +298,9 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salaryActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="JOIN DATE"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ADDRESS"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="LEAVE DATE"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
@@ -341,6 +350,32 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="JOIN DATE"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="date2">
+              <Properties>
+                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+              <Properties>
+                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="LIVING DATE"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

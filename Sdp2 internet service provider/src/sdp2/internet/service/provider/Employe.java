@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 /**
@@ -39,10 +40,6 @@ public Employe() {
         employetable();
     }
     
-
-    
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,21 +59,23 @@ public Employe() {
         name = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         contact = new javax.swing.JTextField();
-        joindate = new javax.swing.JTextField();
+        dateprint = new javax.swing.JTextField();
         addrees = new javax.swing.JTextField();
-        leavedate = new javax.swing.JTextField();
+        dateprint2 = new javax.swing.JTextField();
         city = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         salary = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         update = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        date2 = new com.toedter.calendar.JDateChooser();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         employetable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -134,11 +133,7 @@ public Employe() {
             }
         });
 
-        jLabel5.setText("JOIN DATE");
-
         jLabel6.setText("ADDRESS");
-
-        jLabel7.setText("LEAVE DATE");
 
         jLabel8.setText("CITY");
 
@@ -171,6 +166,24 @@ public Employe() {
             }
         });
 
+        jButton4.setText("JOIN DATE");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        date2.setDateFormatString("yyyy-MM-dd");
+
+        jDateChooser1.setDateFormatString("yyyy-MM-dd");
+
+        jButton5.setText("LIVING DATE");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -182,13 +195,13 @@ public Employe() {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
-                    .addComponent(update))
+                    .addComponent(update)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -196,12 +209,21 @@ public Employe() {
                             .addComponent(name)
                             .addComponent(id)
                             .addComponent(contact)
-                            .addComponent(joindate)
                             .addComponent(addrees, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(leavedate)
                             .addComponent(city)
                             .addComponent(email)
-                            .addComponent(salary, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
+                            .addComponent(salary)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(dateprint, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(date2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(dateprint2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -226,17 +248,21 @@ public Employe() {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(joindate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(dateprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton4))
+                    .addComponent(date2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addrees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(leavedate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(dateprint2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton5))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,7 +387,7 @@ public Employe() {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 30, Short.MAX_VALUE))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,8 +429,8 @@ public Employe() {
             // TODO add your handling code here:
        
             Statement stmt= (Statement) conn.createStatement(); 
-            String query ="insert into employe (e_id, e_name, e_contact, e_email, e_addres, e_city, e_join, e_living, e_salary ) "
-                    + "VALUES('"+id.getText()+"', '"+name.getText()+"', '"+contact.getText()+"', '"+email.getText()+"', '"+addrees.getText()+"', '"+city.getText()+"','"+joindate.getText()+"','"+leavedate.getText()+"','"+salary.getText()+"' )";
+            String query ="insert into employe (e_id, e_name, e_contact, e_email, e_addres, e_city, e_join,  e_salary ) "
+                    + "VALUES('"+id.getText()+"', '"+name.getText()+"', '"+contact.getText()+"', '"+email.getText()+"', '"+addrees.getText()+"', '"+city.getText()+"','"+dateprint.getText()+"','"+salary.getText()+"' )";
                    
            int i= stmt.executeUpdate(query);
                 if (i==1)
@@ -438,7 +464,7 @@ public void update(){
             // TODO add your handling code here:
                  
             Statement stmt= (Statement) conn.createStatement(); 
-             String query = "UPDATE employe SET  e_name='"+name.getText()+"',e_contact ='"+contact.getText()+"',e_email='"+email.getText()+"',e_city='"+city.getText()+"',e_join='"+joindate.getText()+"',e_living='"+leavedate.getText()+"',e_addres='"+addrees.getText()+"',e_salary='"+salary.getText()+"' where e_id= '"+id.getText()+"' ";
+             String query = "UPDATE employe SET  e_name='"+name.getText()+"',e_contact ='"+contact.getText()+"',e_email='"+email.getText()+"',e_city='"+city.getText()+"',e_join='"+dateprint.getText()+"',e_living='"+dateprint2.getText()+"',e_addres='"+addrees.getText()+"',e_salary='"+salary.getText()+"' where e_id= '"+id.getText()+"' ";
            //e_name='"+name.getText()+"',e_contact ='"+contact.getText()+"',e_email='"+email.getText()+"',e_city='"+city.getText()+"',e_join='"+joindate.getText()+"',e_living='"+leavedate.getText()+"',e_salary='"+salary.getText()+"',e_addres='"+addrees.getText()+"'  
 //,e_living='"+leavedate.getText()+"',e_salary='"+salary.getText()+"'
          
@@ -531,9 +557,9 @@ public void Delete(){
         email.setText(data.getValueAt(index,3).toString());
         addrees.setText(data.getValueAt(index,4).toString());
           city.setText(data.getValueAt(index,5).toString());
-        joindate.setText(data.getValueAt(index,6).toString());
+        dateprint.setText(data.getValueAt(index,6).toString());
         
-        leavedate.setText(data.getValueAt(index,7).toString());
+        dateprint2.setText(data.getValueAt(index,7).toString());
       
         
         salary.setText(data.getValueAt(index,8).toString());
@@ -550,6 +576,18 @@ public void Delete(){
     Search();   
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String selectdate = ((JTextField)date2.getDateEditor().getUiComponent()).getText();
+        dateprint.setText(selectdate);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        String selectdate = ((JTextField)date2.getDateEditor().getUiComponent()).getText();
+        dateprint2.setText(selectdate);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
         
 
@@ -594,20 +632,24 @@ public void Delete(){
     private javax.swing.JButton back;
     private javax.swing.JTextField city;
     private javax.swing.JTextField contact;
+    private com.toedter.calendar.JDateChooser date2;
+    private javax.swing.JTextField dateprint;
+    private javax.swing.JTextField dateprint2;
     private javax.swing.JTextField email;
     private javax.swing.JTable employetable;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -615,8 +657,6 @@ public void Delete(){
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField joindate;
-    private javax.swing.JTextField leavedate;
     private javax.swing.JTextField name;
     private javax.swing.JTextField salary;
     private javax.swing.JTextField search;
