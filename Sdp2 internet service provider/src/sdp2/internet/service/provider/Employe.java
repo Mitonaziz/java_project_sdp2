@@ -73,8 +73,8 @@ public Employe() {
         update = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        date2 = new org.netbeans.modules.form.InvalidComponent();
-        jDateChooser1 = new org.netbeans.modules.form.InvalidComponent();
+        date2 = new com.toedter.calendar.JDateChooser();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         employetable = new javax.swing.JTable();
@@ -118,24 +118,6 @@ public Employe() {
         contact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contactActionPerformed(evt);
-            }
-        });
-
-        dateprint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateprintActionPerformed(evt);
-            }
-        });
-
-        addrees.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addreesActionPerformed(evt);
-            }
-        });
-
-        dateprint2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateprint2ActionPerformed(evt);
             }
         });
 
@@ -190,6 +172,10 @@ public Employe() {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        date2.setDateFormatString("yyyy-MM-dd");
+
+        jDateChooser1.setDateFormatString("yyyy-MM-dd");
 
         jButton5.setText("LIVING DATE");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -593,14 +579,14 @@ public void Delete(){
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        //String selectdate = ((JTextField)date2.getDateEditor().getUiComponent()).getText();
-        //dateprint.setText(selectdate);
+        String selectdate = ((JTextField)date2.getDateEditor().getUiComponent()).getText();
+        dateprint.setText(selectdate);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        //String selectdate = ((JTextField)date2.getDateEditor().getUiComponent()).getText();
-        //dateprint2.setText(selectdate);
+        String selectdate = ((JTextField)date2.getDateEditor().getUiComponent()).getText();
+        dateprint2.setText(selectdate);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void dateprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateprintActionPerformed
@@ -658,7 +644,7 @@ public void Delete(){
     private javax.swing.JButton back;
     private javax.swing.JTextField city;
     private javax.swing.JTextField contact;
-    private org.netbeans.modules.form.InvalidComponent date2;
+    private com.toedter.calendar.JDateChooser date2;
     private javax.swing.JTextField dateprint;
     private javax.swing.JTextField dateprint2;
     private javax.swing.JTextField email;
@@ -669,7 +655,7 @@ public void Delete(){
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private org.netbeans.modules.form.InvalidComponent jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
