@@ -215,7 +215,7 @@ void showDate(){
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 190, 40));
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 210, 40));
 
         jButton5.setBackground(new java.awt.Color(255, 204, 204));
         jButton5.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
@@ -228,13 +228,15 @@ void showDate(){
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 180, 40));
 
         jButton6.setBackground(new java.awt.Color(204, 204, 255));
-        jButton6.setText("purchase bandwidth");
+        jButton6.setFont(new java.awt.Font("Helvetica", 1, 18)); // NOI18N
+        jButton6.setText("PURCHASE BANDWIDTH");
+        jButton6.setActionCommand("PURCHASE BANDWIDTH");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 190, 40));
+        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 250, 40));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sdp2/internet/service/provider/IMAGE/login.png"))); // NOI18N
         jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 420));
@@ -262,7 +264,10 @@ void showDate(){
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1206, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1185, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
