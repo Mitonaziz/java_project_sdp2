@@ -635,15 +635,12 @@ public class Customer extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-          
-                  
-           
+        // TODO add your handling code here:           
         try{
             
             Statement stmt= (Statement) conn.createStatement(); 
             String sql = "select id  from createpanel where id='"+plan.getText()+"' ";
-
+            
             ResultSet res =  stmt.executeQuery(sql);
             int id = 0;
           while(res.next()){

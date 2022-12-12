@@ -82,6 +82,7 @@ public Employe() {
         search = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         back = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -336,12 +337,21 @@ public Employe() {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(0, 204, 204));
+        jButton6.setForeground(new java.awt.Color(51, 0, 51));
+        jButton6.setText("REFRESH");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -351,7 +361,9 @@ public Employe() {
                         .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(137, 137, 137)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(back)
                         .addGap(15, 15, 15)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,7 +385,9 @@ public Employe() {
                         .addGap(8, 8, 8)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(back))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(back)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -429,6 +443,10 @@ public Employe() {
             // TODO add your handling code here:
        
             Statement stmt= (Statement) conn.createStatement(); 
+            String num = contact.getText();
+            if(num.length()==11){
+                
+            
             String query ="insert into employe (e_id, e_name, e_contact, e_email, e_addres, e_city, e_join,  e_salary ) "
                     + "VALUES('"+id.getText()+"', '"+name.getText()+"', '"+contact.getText()+"', '"+email.getText()+"', '"+addrees.getText()+"', '"+city.getText()+"','"+dateprint.getText()+"','"+salary.getText()+"' )";
                    
@@ -437,14 +455,7 @@ public Employe() {
                 {
                     JOptionPane.showMessageDialog(null,"Data insert successfully");
                      //id.setText("");
-//        name.setText("");
-//        contact.setText("");
-//        joindate.setText("");
-//        addrees.setText("");
-//        leavedate.setText("");
-//        city.setText("");
-//        email.setText("");
-//        salary.setText("");
+
                     employetable();
                  
                 }
@@ -453,6 +464,10 @@ public Employe() {
                 {
                     JOptionPane.showMessageDialog(null,"Data not insert please try again");
                 }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Pleae correct phone number");
+            }
         } catch (Exception ex) {
              JOptionPane.showMessageDialog(null,"You have a mistake please try again");
             
@@ -601,6 +616,19 @@ public void Delete(){
         // TODO add your handling code here:
     }//GEN-LAST:event_addreesActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        id.setText(null);
+        name.setText(null);
+        contact.setText(null);
+        email.setText(null);
+        addrees.setText(null);
+        city.setText(null);
+        dateprint.setText(null);
+        dateprint2.setText(null);
+        salary.setText(null);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
         
 
   
@@ -655,6 +683,7 @@ public void Delete(){
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

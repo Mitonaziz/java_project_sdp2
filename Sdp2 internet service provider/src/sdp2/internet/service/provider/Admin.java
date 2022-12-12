@@ -326,6 +326,9 @@ setVisible(false);
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        Payment paym = new Payment();
+        paym.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -334,6 +337,9 @@ setVisible(false);
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        PURCHASE_BANDWIDTH purchase = new PURCHASE_BANDWIDTH();
+        purchase.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
