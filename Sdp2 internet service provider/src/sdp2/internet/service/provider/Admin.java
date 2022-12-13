@@ -324,6 +324,9 @@ setVisible(false);
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        Home ob = new Home();
+        ob.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
