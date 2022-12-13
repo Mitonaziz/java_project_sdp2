@@ -725,6 +725,7 @@ public class Customer extends javax.swing.JFrame {
         contact.setText(data.getValueAt(index,2).toString());
         address.setText(data.getValueAt(index,5).toString());
         plan.setText(data.getValueAt(index,10).toString());
+        total_month.setText(data.getValueAt(index,6).toString());
         
     }//GEN-LAST:event_customerlisttableMouseClicked
 

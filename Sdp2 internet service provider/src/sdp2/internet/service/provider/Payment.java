@@ -96,6 +96,11 @@ public class Payment extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(153, 255, 255));
         jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(51, 255, 255));
         jButton3.setText("DATE\n");
@@ -243,6 +248,13 @@ public class Payment extends javax.swing.JFrame {
         String selectdate = ((JTextField)date.getDateEditor().getUiComponent()).getText();
        date_print.setText(selectdate);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+         Admin ob = new Admin();
+           ob.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
